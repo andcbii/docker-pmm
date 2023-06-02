@@ -1,0 +1,15 @@
+version: '2.1'
+services:
+  Plex-Meta-Manager:
+    image: meisnate12/plex-meta-manager
+    container_name: plex-meta-manager
+    restart: unless-stopped
+    volumes:
+      - plexmm_data:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+volumes:
+  plexmm_data:
+    external: true
