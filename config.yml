@@ -1,0 +1,147 @@
+## This file is a template remove the .template to use the file
+
+libraries:                                      # This is called out once within the config.yml file                                       
+  Movies:                                       # Each library must match the Plex library name
+    operations:
+      delete_collections:
+        configured: false
+        managed: true
+#      mass_content_rating_update: omdb
+      content_rating_mapper:
+        Not Rated: NR
+        Unrated: NR
+        Passed: Approved
+        X: NC-17
+    metadata_path:
+    - repo: Movies.yml
+    - repo: Ratings.yml
+    - pmm: universe
+      template_variables:
+        exclude:
+        - dca
+    - repo: manual-universe.yml
+    report_path: /config/reports/Movies-report.yml
+  Shorts:                                       # Each library must match the Plex library name
+    operations:
+      delete_collections:
+        unconfigured: true
+#      mass_content_rating_update: omdb
+      content_rating_mapper:
+        Not Rated: NR
+        Unrated: NR
+        Passed: Approved
+        X: NC-17
+    metadata_path:
+    - repo: Shorts.yml
+    - repo: Ratings.yml
+    report_path: /config/reports/shorts-report.yml
+  TV Shows:
+    operations:
+      delete_collections:
+        unconfigured: true
+    metadata_path:
+    - repo: TV.yml
+    report_path: /config/reports/TV-report.yml
+  Hallmarkish:
+    operations:
+      delete_collections:
+        unconfigured: true
+#      mass_content_rating_update: omdb
+      content_rating_mapper:
+        Not Rated: NR
+        Unrated: NR
+        Passed: Approved
+        X: NC-17
+    metadata_path:
+    - repo: Hallmarkish.yml
+    report_path: /config/reports/Hallmarkish.yml
+
+settings:
+  cache: true
+  cache_expiration: 60
+  asset_directory: config/assets
+  asset_folders: false
+  asset_depth: 0
+  create_asset_folders: false
+  prioritize_assets: false
+  dimensional_asset_rename: false
+  download_url_assets: false
+  show_missing_season_assets: false
+  show_missing_episode_assets: false
+  show_asset_not_needed: false
+  sync_mode: append
+  default_collection_order: release
+  minimum_items: 1
+  delete_below_minimum: false
+  delete_not_scheduled: false
+  run_again_delay: 2
+  missing_only_released: true
+  show_unmanaged: true
+  show_filtered: true
+  show_options: false
+  show_missing: true
+  only_filter_missing: false
+  show_missing_assets: true
+  save_report: true
+  tvdb_language: eng
+  ignore_ids:
+  ignore_imdb_ids:
+  item_refresh_delay: 0
+  playlist_sync_to_user: all
+  playlist_exclude_users:
+  playlist_report: false
+  custom_repo: https://github.com/andcbii/pmm/tree/main/config/
+  verify_ssl: true
+  check_nightly: false
+  show_unconfigured: true
+
+webhooks:                                       # Can be individually specified per library as well
+  error: notifiarr
+  version: notifiarr
+  run_start: notifiarr
+  run_end: notifiarr
+  changes: notifiarr
+
+  delete:
+plex:                                           # Can be individually specified per library as well; REQUIRED for the script to run
+  url: http://192.168.10.9:32400
+  token: XgRWjVyYxyEMzvTkLNR-
+  timeout: 60
+  clean_bundles: false
+  empty_trash: false
+  optimize: false
+#plex:                                           # Can be individually specified per library as well; REQUIRED for the script to run
+#  url: http://192.168.10.5:32400
+#  token: LUNVscHB7zs_aJDLPxfS
+#  timeout: 60
+#  clean_bundles: false
+#  empty_trash: false
+#  optimize: false
+
+tmdb:                                           # REQUIRED for the script to run
+  apikey: eb43d88409dfa7e0598f71b46681efed
+  language: en
+  cache_expiration: 60
+  region:
+tautulli:                                       # Can be individually specified per library as well
+  url: http://192.168.60.2:8181/tautulli
+  apikey: 2c3e29cd06094739acaa510e4354f856
+
+trakt:
+  client_id: 873a09303f40952fd7d2cfdb32ce1eb7ca94dabf4419a70d090fbcdf0cc4c250
+  client_secret: 1516e86c9f07e2689b64d96257f323eab51ee4094145fea3669fbf57b1edc40b
+  pin:
+  authorization:
+    # everything below is autofilled by the script
+    access_token: 23f26b18f827727f1a91ea6ce306504e93694843173247288e258db9035dd9e8
+    token_type: Bearer
+    expires_in: 7889238
+    refresh_token: beaf29a2f97276971c9e6b7bf0a220e66296050db9e72f66c9443ae189f8de75
+    scope: public
+    created_at: 1680429660
+omdb:
+  apikey: bef36acb
+  cache_expiration: 60
+
+notifiarr:
+  apikey: 3f1ed226-a937-4211-821d-e640a272ab29
