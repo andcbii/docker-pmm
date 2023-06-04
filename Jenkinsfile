@@ -6,13 +6,13 @@
 pipeline {
   agent any
   parameters{
-    string(name: 'existingEndpointId', defaultValue: '')
+    string(name: 'existingEndpointId', defaultValue: '5')
   }
   stages {
     stage('Get JWT Token') {
       steps {
         script {
-          withCredentials([usernamePassword(credentialsId: '28289f1f-f98a-44b8-b33c-a43630272b35', usernameVariable: 'PORTAINER_USERNAME', passwordVariable: 'PORTAINER_PASSWORD')]) {
+          withCredentials([usernamePassword(credentialsId: 'portainer', usernameVariable: 'PORTAINER_USERNAME', passwordVariable: 'PORTAINER_PASSWORD')]) {
               def json = """
                   {"Username": "$PORTAINER_USERNAME", "Password": "$PORTAINER_PASSWORD"}
               """
@@ -35,7 +35,7 @@ pipeline {
             def stacks = new groovy.json.JsonSlurper().parseText(stackResponse.getContent())
             
             stacks.each { stack ->
-              if(stack.Name == "haproxy") {
+              if(stack.Name == "plexmm") {
                 existingStackId = stack.Id
                 existingEndpointId = stack.EndpointId
               }
@@ -62,12 +62,12 @@ pipeline {
 
           // Stack does not exist
           // Generate JSON for when the stack is created
-          withCredentials([usernamePassword(credentialsId: '0a5dd0f0-7df9-4b62-b07b-0d8ce44062c1', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
+          withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
             // def swarmResponse = httpRequest acceptType: 'APPLICATION_JSON', validResponseCodes: '200', httpMode: 'GET', ignoreSslErrors: true, consoleLogResponseBody: true, url: "https://portainer.alderaan.co/api/endpoints/${env.existingEndpointId}/docker/swarm", customHeaders:[[name:"Authorization", value: env.JWTTOKEN ], [name: "cache-control", value: "no-cache"]]
             // def swarmInfo = new groovy.json.JsonSlurper().parseText(swarmResponse.getContent())
 
             createStackJson = """
-              {"Name": "HAProxy", "SwarmID": "", "RepositoryURL": "https://github.com/$GITHUB_USERNAME/Docker", "ComposeFilePathInRepository": "/HAProxy/", "RepositoryAuthentication": true, "RepositoryUsername": "$GITHUB_USERNAME", "RepositoryPassword": "$GITHUB_PASSWORD"}
+              {"Name": "plexmm", "SwarmID": "", "RepositoryURL": "https://github.com/$GITHUB_USERNAME/docker-pmm", "ComposeFilePathInRepository": "/docker-compose.yml", "RepositoryAuthentication": true, "RepositoryUsername": "$GITHUB_USERNAME", "RepositoryPassword": "$GITHUB_PASSWORD"}
             """
 
           }
