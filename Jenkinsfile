@@ -16,7 +16,7 @@ pipeline {
               def json = """
                   {"Username": "$PORTAINER_USERNAME", "Password": "$PORTAINER_PASSWORD"}
               """
-              def jwtResponse = httpRequest acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', validResponseCodes: '200', httpMode: 'POST', ignoreSslErrors: true, consoleLogResponseBody: true, requestBody: json, url: "https://portainer2.alderaan.co:9443/api/auth"
+              def jwtResponse = httpRequest acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', validResponseCodes: '200', httpMode: 'POST', ignoreSslErrors: true, consoleLogResponseBody: true, requestBody: json, url: "https://portainer.alderaan.co:9443/api/auth"
               def jwtObject = new groovy.json.JsonSlurper().parseText(jwtResponse.getContent())
               env.JWTTOKEN = "Bearer ${jwtObject.jwt}"
           }
@@ -32,7 +32,7 @@ pipeline {
           String existingStackId = ""
           // String existingEndpointId = ""
           if("true") {
-            def stackResponse = httpRequest httpMode: 'GET', ignoreSslErrors: true, url: "https://portainer2.alderaan.co:9443/api/stacks", validResponseCodes: '200', consoleLogResponseBody: true, customHeaders:[[name:"Authorization", value: env.JWTTOKEN ], [name: "cache-control", value: "no-cache"]]
+            def stackResponse = httpRequest httpMode: 'GET', ignoreSslErrors: true, url: "https://portainer.alderaan.co:9443/api/stacks", validResponseCodes: '200', consoleLogResponseBody: true, customHeaders:[[name:"Authorization", value: env.JWTTOKEN ], [name: "cache-control", value: "no-cache"]]
             def stacks = new groovy.json.JsonSlurper().parseText(stackResponse.getContent())
             
             stacks.each { stack ->
@@ -46,7 +46,7 @@ pipeline {
           if(existingStackId?.trim()) {
             // Delete the stack
             def stackURL = """
-              https://portainer2.alderaan.co:9443/api/stacks/$existingStackId?endpointId=$existingEndpointId
+              https://portainer.alderaan.co:9443/api/stacks/$existingStackId?endpointId=$existingEndpointId
             """
             httpRequest acceptType: 'APPLICATION_JSON', validResponseCodes: '204', httpMode: 'DELETE', ignoreSslErrors: true, url: stackURL, customHeaders:[[name:"Authorization", value: env.JWTTOKEN ], [name: "cache-control", value: "no-cache"]]
 
