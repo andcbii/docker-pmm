@@ -121,7 +121,7 @@ plex:                                           # Can be individually specified 
 tmdb:                                           # REQUIRED for the script to run
   apikey: eb43d88409dfa7e0598f71b46681efed
   language: en
-  cache_expiration: 1
+  cache_expiration: 60
   region:
 tautulli:                                       # Can be individually specified per library as well
   url: http://192.168.60.3:8181/tautulli
