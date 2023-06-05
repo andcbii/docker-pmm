@@ -4,11 +4,12 @@ services:
     image: meisnate12/plex-meta-manager
     container_name: plex-meta-manager
     restart: unless-stopped
+    user: 1000:1000
     volumes:
       - plexmm_data:/config
     environment:
-      - PUID=1000
-      - PGID=1000
+#      - PUID=1000
+#      - PGID=1000
       - TZ=America/Chicago
 volumes:
   plexmm_data:
