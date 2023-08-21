@@ -130,15 +130,15 @@ tautulli:                                       # Can be individually specified 
 trakt:
   client_id: 873a09303f40952fd7d2cfdb32ce1eb7ca94dabf4419a70d090fbcdf0cc4c250
   client_secret: 1516e86c9f07e2689b64d96257f323eab51ee4094145fea3669fbf57b1edc40b
-  pin: 6EF24509
+  pin:
   authorization:
     # everything below is autofilled by the script
-    access_token: 23f26b18f827727f1a91ea6ce306504e93694843173247288e258db9035dd9e8
+    access_token: 8516c1ff290308e7c4208cddbd516af494ebfb77b18813e59b37e81a6a8cab70
     token_type: Bearer
-    expires_in: 7889238
-    refresh_token: beaf29a2f97276971c9e6b7bf0a220e66296050db9e72f66c9443ae189f8de75
+    expires_in: 7889237
+    refresh_token: e9f851f6d2ee864bdee80130a1340ad64d02dc533e1abdb052e2694c992ac869
     scope: public
-    created_at: 1680429660
+    created_at: 1692651732
 omdb:
   apikey: bef36acb
   cache_expiration: 60
