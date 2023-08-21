@@ -130,7 +130,7 @@ tautulli:                                       # Can be individually specified 
 trakt:
   client_id: 873a09303f40952fd7d2cfdb32ce1eb7ca94dabf4419a70d090fbcdf0cc4c250
   client_secret: 1516e86c9f07e2689b64d96257f323eab51ee4094145fea3669fbf57b1edc40b
-  pin:
+  pin: 4C42B147
   authorization:
     # everything below is autofilled by the script
     access_token: 23f26b18f827727f1a91ea6ce306504e93694843173247288e258db9035dd9e8
