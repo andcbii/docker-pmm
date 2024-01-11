@@ -129,7 +129,7 @@ plex:                                           # Can be individually specified 
 tmdb:                                           # REQUIRED for the script to run
   apikey: eb43d88409dfa7e0598f71b46681efed
   language: en
-  cache_expiration: 1
+  cache_expiration: 60
   region:
 tautulli:                                       # Can be individually specified per library as well
   url: http://192.168.60.3:8181/tautulli
@@ -138,7 +138,7 @@ tautulli:                                       # Can be individually specified 
 trakt:
   client_id: 873a09303f40952fd7d2cfdb32ce1eb7ca94dabf4419a70d090fbcdf0cc4c250
   client_secret: 1516e86c9f07e2689b64d96257f323eab51ee4094145fea3669fbf57b1edc40b
-  pin:10FD9E60 
+  pin: 10FD9E60 
   authorization:
     # everything below is autofilled by the script
     access_token: fdef5f2f2b22e8a0fbff023815685711b272745407dad631effea6a5de21bd6b
