@@ -12,14 +12,15 @@ libraries:                                      # This is called out once within
         Unrated: NR
         Passed: Approved
         X: NC-17
-    metadata_path:
+    collection_files:
     - repo: Movies.yml
-    - repo: Ratings.yml
     - pmm: universe
       template_variables:
         exclude:
         - dca
     - repo: manual-universe.yml
+    metadata_files:
+    - repo: Ratings.yml
     report_path: /config/reports/Movies-report.yml
   Shorts:                                       # Each library must match the Plex library name
     operations:
