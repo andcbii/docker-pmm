@@ -32,15 +32,16 @@ libraries:                                      # This is called out once within
         Unrated: NR
         Passed: Approved
         X: NC-17
-    metadata_path:
+    collection_files:
     - repo: Shorts.yml
+    metadata_files:
     - repo: Ratings.yml
     report_path: /config/reports/shorts-report.yml
   TV Shows:
     operations:
       delete_collections:
         unconfigured: true
-    metadata_path:
+    collection_files:
     - repo: TV.yml
     report_path: /config/reports/TV-report.yml
   Hallmarkish:
@@ -53,7 +54,7 @@ libraries:                                      # This is called out once within
         Unrated: NR
         Passed: Approved
         X: NC-17
-    metadata_path:
+    collection_files:
     - repo: Hallmarkish.yml
     report_path: /config/reports/Hallmarkish.yml
 
@@ -96,6 +97,11 @@ settings:
   check_nightly: false
   show_unconfigured: true
 
+  run_order:
+  - operations
+  - metadata
+  - collections
+  - overlays
 webhooks:                                       # Can be individually specified per library as well
   error: notifiarr
   version: notifiarr
@@ -119,10 +125,11 @@ plex:                                           # Can be individually specified 
 #  empty_trash: false
 #  optimize: false
 
+  db_cache:
 tmdb:                                           # REQUIRED for the script to run
   apikey: eb43d88409dfa7e0598f71b46681efed
   language: en
-  cache_expiration: 60
+  cache_expiration: 1
   region:
 tautulli:                                       # Can be individually specified per library as well
   url: http://192.168.60.3:8181/tautulli
@@ -131,15 +138,15 @@ tautulli:                                       # Can be individually specified 
 trakt:
   client_id: 873a09303f40952fd7d2cfdb32ce1eb7ca94dabf4419a70d090fbcdf0cc4c250
   client_secret: 1516e86c9f07e2689b64d96257f323eab51ee4094145fea3669fbf57b1edc40b
-  pin:
+  pin:10FD9E60 
   authorization:
     # everything below is autofilled by the script
-    access_token: 8516c1ff290308e7c4208cddbd516af494ebfb77b18813e59b37e81a6a8cab70
+    access_token: fdef5f2f2b22e8a0fbff023815685711b272745407dad631effea6a5de21bd6b
     token_type: Bearer
     expires_in: 7889237
-    refresh_token: e9f851f6d2ee864bdee80130a1340ad64d02dc533e1abdb052e2694c992ac869
+    refresh_token: 9fa5a28d3bb54e76cf14bd462f6c15eb44b35e2de4e12f149922418fc60d73b1
     scope: public
-    created_at: 1692651732
+    created_at: 1700564503
 omdb:
   apikey: bef36acb
   cache_expiration: 60
