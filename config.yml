@@ -16,8 +16,13 @@ libraries:                                      # This is called out once within
     - repo: Movies.yml
     - pmm: universe
       template_variables:
+        collection_mode: hide
+        use_separator: false
         exclude:
         - dca
+        append_data:
+          ucmonster: Universal Classic Monsters
+        trakt_list_ucmonster: https://trakt.tv/users/doomer/lists/official-universal-classic-monsters-collection
     - repo: manual-universe.yml
     metadata_files:
     - repo: Ratings.yml
