@@ -23,6 +23,7 @@ libraries:                                      # This is called out once within
         append_data:
           ucmonster: Universal Classic Monsters
         trakt_list_ucmonster: https://trakt.tv/users/doomer/lists/official-universal-classic-monsters-collection
+        url_poster_ucmonster: https://res.cloudinary.com/dkyd429md/image/upload/v1706141713/Plex%20-%20PMM%20images/qYPw1ME_atp8jr.png
     - repo: manual-universe.yml
     metadata_files:
     - repo: Ratings.yml
